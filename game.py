@@ -24,12 +24,25 @@ def random_word():
 
     #this is used as computers don't have any true randomness to them
     random.seed(time.time())
+    #this will make the program choose a word from this list of 'acceptable words'
     random_chosen_words = random.choice(words_list)
+    #this will make the randomly chosen word appear in uppercase (this will help with comparisons later on)
     random_chosen_words = random_chosen_words.upper()
 
 #this will print out dashes where the yet to be guessed letters of the word will be
 def word_before_guess():
-    pass
+    global correct_guess_letter
+    global random_chosen_words
+
+    for i in range(0, len(random_chosen_words)):
+        letter = random_chosen_words[i]
+        #print the correctly guessed letter
+        if letter in correct_guess_letter:
+            print(letter, end=" ")
+        #print an a dash for the yet to be guessed letters
+        else:
+            print("_", end=" ")
+    print("")
 
 #will create a hangman in relation to how many lives are left of the player
 def create_hangman():
