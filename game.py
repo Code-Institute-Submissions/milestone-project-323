@@ -20,7 +20,12 @@ game_over = False
 
 #will return randomly chosen word for the hangman game
 def random_word():
-    pass
+    global random_chosen_words
+
+    #this is used as computers don't have any true randomness to them
+    random.seed(time.time())
+    random_chosen_words = random.choice(words_list)
+    random_chosen_words = random_chosen_words.upper()
 
 #this will print out dashes where the yet to be guessed letters of the word will be
 def word_before_guess():
