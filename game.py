@@ -16,7 +16,7 @@ random_chosen_words = ""
 lives = 6
 
 #variable for game over (global)
-game_over = False
+is_game_over = False
 
 #will return randomly chosen word for the hangman game
 def random_word():
@@ -145,11 +145,41 @@ def one_valid_letter():
 
 #will check if the letter guessed is correct or wrong, and update the global variables accordingly
 def guess_letter():
-    pass
+    global correct_guess_letter
+    global incorrect_guess_letter
+    global lives
+
+    letter = one_valid_letter()
+    #if the guessed letter is in the randomly chosen word, append the letter to correct_guess_letter
+    if letter in random_chosen_words:
+        correct_guess_letter.append(letter)
+    else:
+        #if the the chosen word is incorrect remove one life and append to the incorrect_guessed_letter
+        incorrect_guess_letter.append(letter)
+        lives -= 1
 
 #checks if the player has won or lost the game
 def game_over():
-    pass
+    global lives
+    global is_game_over
+    global correct_guess_letter
+
+    #if the lives left are less than or equal to 0 then game over is true and the hangman will be drawn
+    if lives <= 0:
+        is_game_over = True
+        create_hangman()
+        print("You have lost! The correct word was" + random_chosen_words + ". Better luck next time!")
+    else:
+        all_letters_correct = True
+        for letter in random_chosen_words:
+            #if all_letters_correct is false then it will break out of the positive feedback loop and check the next segment
+            if letter not in correct_guess_letter:
+                all_letters_correct = False
+                break
+        #if all the letters are correct and there are no more letters to guess then a message will display showing that you have won the game
+        if all_letters_correct:
+            is_game_over = True
+            print("You have won the game! Congratulations! Feel free to try again!")
 
 #the entry point of the game application, will call in all other mehtods for a game loop
 def game_main():
