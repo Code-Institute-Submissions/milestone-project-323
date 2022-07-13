@@ -159,7 +159,7 @@ def guess_letter():
         lives -= 1
 
 #checks if the player has won or lost the game
-def game_over():
+def check_game_over():
     global lives
     global is_game_over
     global correct_guess_letter
@@ -183,7 +183,21 @@ def game_over():
 
 #the entry point of the game application, will call in all other mehtods for a game loop
 def game_main():
-    pass
+    global is_game_over
+
+    print("!WELCOME TO HANGMAN!")
+    random_word()
+
+    while is_game_over is False:
+        create_hangman()
+        word_before_guess()
+
+        if len(incorrect_guess_letter) > 0:
+            print("Incorrect guesses: ")
+            print(incorrect_guess_letter)
+    
+        guess_letter()
+        check_game_over()
 
 #will only be run if you run the game throguh the terminal or an IDE (like PyCharms)
-if _name_ == '_main_':
+if __name__ == '__game_main__':
