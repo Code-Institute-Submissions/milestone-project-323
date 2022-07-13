@@ -121,7 +121,27 @@ def create_hangman():
 
 #makes sure that the player can only choose a letter that hasn't been chosen yet, and is a valid letter (i.e not a number or special case etc)
 def one_valid_letter():
-    pass
+    is_letter_valid = False
+    letter = ""
+    while is_letter_valid is False:
+        letter = input("Enter guess letter: ")
+        letter = letter.strip().lower()
+        #the letter can not be less than 1 or more than one (an input of 0 is invalid, so is an input of 2 and above!)
+        if len(letter) <= 0 or len(letter) > 1:
+            print("Invalid, letter has to be the length of 1")
+        #the letter will be a letter from A-Z (no comma or number!)
+        elif letter.isalpha():
+            #if the letter has been chosen before it cannot be chosen again
+            if letter in correct_guess_letter or letter in incorrect_guess_letter:
+                print("You have already guessed this letter" + letter + "Please try again!")
+            #if the letter passes every criteria above it will exit the negative feedback loop and stand as valid
+            else:
+                is_letter_valid = True
+        else:
+            #an error message if the letter chosen is not a letter from a-z
+            print("letter must be from a-z")
+    
+    return letter
 
 #will check if the letter guessed is correct or wrong, and update the global variables accordingly
 def guess_letter():
