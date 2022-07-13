@@ -46,7 +46,78 @@ def word_before_guess():
 
 #will create a hangman in relation to how many lives are left of the player
 def create_hangman():
-    pass
+    global lives
+
+    if lives == 6:
+        print("+-------------+")
+        print("I             I")
+        print("I")
+        print("I")
+        print("I")
+        print("I")
+        print("I")
+        print("I")
+        print("+-------+")
+    elif lives == 5:
+        print("+-------------+")
+        print("I             I")
+        print("I             O")
+        print("I")
+        print("I")
+        print("I")
+        print("I")
+        print("I")
+        print("+-------+") 
+    elif lives == 4:
+        print("+-------------+")
+        print("I             I")
+        print("I             O")
+        print("I             I")
+        print("I")
+        print("I")
+        print("I")
+        print("I")
+        print("+-------+") 
+    elif lives == 3:
+        print("+-------------+")
+        print("I             I")
+        print("I             O")
+        print("I             I--")
+        print("I")
+        print("I")
+        print("I")
+        print("I")
+        print("+-------+") 
+    elif lives == 2:
+        print("+-------------+")
+        print("I             I")
+        print("I             O")
+        print("I           --I--")
+        print("I")
+        print("I")
+        print("I")
+        print("I")
+        print("+-------+") 
+    elif lives == 1:
+        print("+-------------+")
+        print("I             I")
+        print("I             O")
+        print("I           --I--")
+        print("I             I")
+        print("I            /")
+        print("I")
+        print("I")
+        print("+-------+") 
+    elif lives == 0:
+        print("#-------------")
+        print("I             I")
+        print("I             O")
+        print("I           --I--")
+        print("I             I")
+        print("I            / \\")
+        print("I")
+        print("I")
+        print("#-------#") 
 
 #makes sure that the player can only choose a letter that hasn't been chosen yet, and is a valid letter (i.e not a number or special case etc)
 def one_valid_letter():
