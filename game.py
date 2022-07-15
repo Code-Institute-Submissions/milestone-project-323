@@ -78,7 +78,7 @@ def create_hangman():
         print("I")
         print("I")
         print("I")
-        print("+-------+") 
+        print("+-------+")
     elif lives == 4:
         print("+-------------+")
         print("I             I")
@@ -88,7 +88,7 @@ def create_hangman():
         print("I")
         print("I")
         print("I")
-        print("+-------+") 
+        print("+-------+")
     elif lives == 3:
         print("+-------------+")
         print("I             I")
@@ -98,7 +98,7 @@ def create_hangman():
         print("I")
         print("I")
         print("I")
-        print("+-------+") 
+        print("+-------+")
     elif lives == 2:
         print("+-------------+")
         print("I             I")
@@ -108,7 +108,7 @@ def create_hangman():
         print("I")
         print("I")
         print("I")
-        print("+-------+") 
+        print("+-------+")
     elif lives == 1:
         print("+-------------+")
         print("I             I")
@@ -118,7 +118,7 @@ def create_hangman():
         print("I            /")
         print("I")
         print("I")
-        print("+-------+") 
+        print("+-------+")
     elif lives == 0:
         print("#-------------")
         print("I             I")
@@ -128,7 +128,7 @@ def create_hangman():
         print("I            / \\")
         print("I")
         print("I")
-        print("#-------#") 
+        print("#-------#")
 
 # makes sure that the player can only choose a letter that hasn't been chosen
 # yet, and is a valid letter (i.e not a number or special case etc)
@@ -150,7 +150,7 @@ def one_valid_letter():
         elif letter.isalpha():
             # if the letter has been chosen before it cannot be chosen again
             if letter in correct_guess_letter or letter in \
-                incorrect_guess_letter:
+                    incorrect_guess_letter:
                 print("Letter already guessed" + letter + "Please try again!")
             # if the letter passes every criteria above it will exit the
             # negative feedback loop and stand as valid
