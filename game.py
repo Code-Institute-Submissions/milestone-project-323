@@ -235,9 +235,6 @@ def game_main():
     guess_letter()
     check_game_over()
 
-# will only be run if you run the game through the terminal or an IDE
-# (like PyCharms)
-
 
 if __name__ == '__game_main__':
     game_main()
