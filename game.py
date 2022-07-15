@@ -151,7 +151,7 @@ def one_valid_letter():
             # if the letter has been chosen before it cannot be chosen again
             if letter in correct_guess_letter or letter in \
                 incorrect_guess_letter:
-                print("You have already guessed this letter" + letter + "Please try again!")
+                print("Letter already guessed" + letter + "Please try again!")
             # if the letter passes every criteria above it will exit the
             # negative feedback loop and stand as valid
             else:
@@ -187,6 +187,8 @@ def guess_letter():
 
 
 def check_game_over():
+    """ This fucntion will check wether the player has won or
+    lost the hangman game """
     global lives
     global is_game_over
     global correct_guess_letter
@@ -196,7 +198,7 @@ def check_game_over():
     if lives <= 0:
         is_game_over = True
         create_hangman()
-        print("You have lost! The correct word was" + random_chosen_words + ". Better luck next time!")
+        print("You lost! Correct:" + random_chosen_words + ". Try again!")
     else:
         all_letters_correct = True
         for letter in random_chosen_words:
@@ -209,13 +211,14 @@ def check_game_over():
         # guess then a message will display showing that you have won the game
         if all_letters_correct:
             is_game_over = True
-            print("You have won the game! Congratulations! Feel free to try again!")
+            print("You've won! Congratulations! Feel free to try again!")
 
 # the entry point of the game application, will call in all other mehtods for
 # a game loop
 
 
 def game_main():
+    """ Will call the previously written fucntions into a game loop """
     global is_game_over
 
     print("!WELCOME TO HANGMAN!")
@@ -228,9 +231,9 @@ def game_main():
         if len(incorrect_guess_letter) > 0:
             print("Incorrect guesses: ")
             print(incorrect_guess_letter)
-    
-        guess_letter()
-        check_game_over()
+
+    guess_letter()
+    check_game_over()
 
 # will only be run if you run the game through the terminal or an IDE
 # (like PyCharms)
