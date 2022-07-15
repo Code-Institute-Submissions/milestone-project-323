@@ -236,5 +236,5 @@ def game_main():
     check_game_over()
 
 
-if __name__ == '__game_main__':
+if __name__ == "__main__":
     game_main()

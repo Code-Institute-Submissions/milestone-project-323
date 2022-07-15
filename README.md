@@ -9,6 +9,8 @@
 7. If all lives has been lost, the hangman drawing will be completed and the player has lost. A message will display on screen
     telling the player of his/her/their loss.
 
+pygame has been installed
+
 problems yet to be solved:
     1. pylint (missing-function-docstring)
 
