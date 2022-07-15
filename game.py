@@ -19,6 +19,8 @@ lives = 6
 is_game_over = False
 
 # This fucntion makes up the methods used for the random_words generation
+
+
 def random_word():
     """will return randomly chosen word for the hangman game"""
     global random_chosen_words
@@ -32,6 +34,8 @@ def random_word():
 
 # This function will create dashes for where there are yet to be placed any
 # words
+
+
 def word_before_guess():
     """will print out dashes where the yet to be guessed letters of the word"""
     global correct_guess_letter
@@ -49,6 +53,8 @@ def word_before_guess():
 
 # This function will create a hangman depending on how many lives there are
 # left of the player
+
+
 def create_hangman():
     """will create a hangman in relation to how many lives are left"""
     global lives
@@ -126,6 +132,8 @@ def create_hangman():
 
 # makes sure that the player can only choose a letter that hasn't been chosen
 # yet, and is a valid letter (i.e not a number or special case etc)
+
+
 def one_valid_letter():
     """ This function makes sure that only one letter can be chosen at a time,
     and it will need to be a letter from a-z """
@@ -134,7 +142,8 @@ def one_valid_letter():
     while is_letter_valid is False:
         letter = input("Enter guess letter: ")
         letter = letter.strip().lower()
-        # the letter can not be less than 1 or more than one (an input of 0 is invalid, so is an input of 2 and above!)
+        # the letter can not be less than 1 or more than one (an input of 0 is
+        # invalid, so is an input of 2 and above!)
         if len(letter) <= 0 or len(letter) > 1:
             print("Invalid, letter has to be the length of 1")
         # the letter will be a letter from A-Z (no comma or number!)
@@ -142,9 +151,9 @@ def one_valid_letter():
             # if the letter has been chosen before it cannot be chosen again
             if letter in correct_guess_letter or letter in \
                 incorrect_guess_letter:
-                print("You have already guessed this letter" + letter + \
-                    "Please try again!")
-            # if the letter passes every criteria above it will exit the negative feedback loop and stand as valid
+                print("You have already guessed this letter" + letter + "Please try again!")
+            # if the letter passes every criteria above it will exit the
+            # negative feedback loop and stand as valid
             else:
                 is_letter_valid = True
         else:
@@ -152,28 +161,38 @@ def one_valid_letter():
             print("letter must be from a-z")
             return letter
 
-# will check if the letter guessed is correct or wrong, and update the global variables accordingly
+# will check if the letter guessed is correct or wrong, and update the global
+# variables accordingly
+
+
 def guess_letter():
+    """ This fucntion will check wether the answer is correct or incorrect and
+    update the global variables accordingly """
     global correct_guess_letter
     global incorrect_guess_letter
     global lives
 
     letter = one_valid_letter()
-    # if the guessed letter is in the randomly chosen word, append the letter to correct_guess_letter
+    # if the guessed letter is in the randomly chosen word, append the letter
+    # to correct_guess_letter
     if letter in random_chosen_words:
         correct_guess_letter.append(letter)
     else:
-        # if the the chosen word is incorrect remove one life and append to the incorrect_guessed_letter
+        # if the the chosen word is incorrect remove one life and append to
+        # the incorrect_guessed_letter
         incorrect_guess_letter.append(letter)
         lives -= 1
 
 # checks if the player has won or lost the game
+
+
 def check_game_over():
     global lives
     global is_game_over
     global correct_guess_letter
 
-    # if the lives left are less than or equal to 0 then game over is true and the hangman will be drawn
+    # if the lives left are less than or equal to 0 then game over is true and
+    # the hangman will be drawn
     if lives <= 0:
         is_game_over = True
         create_hangman()
@@ -181,16 +200,21 @@ def check_game_over():
     else:
         all_letters_correct = True
         for letter in random_chosen_words:
-            # if all_letters_correct is false then it will break out of the positive feedback loop and check the next segment
+            # if all_letters_correct is false then it will break out of the
+            # positive feedback loop and check the next segment
             if letter not in correct_guess_letter:
                 all_letters_correct = False
                 break
-        # if all the letters are correct and there are no more letters to guess then a message will display showing that you have won the game
+        # if all the letters are correct and there are no more letters to
+        # guess then a message will display showing that you have won the game
         if all_letters_correct:
             is_game_over = True
             print("You have won the game! Congratulations! Feel free to try again!")
 
-# the entry point of the game application, will call in all other mehtods for a game loop
+# the entry point of the game application, will call in all other mehtods for
+# a game loop
+
+
 def game_main():
     global is_game_over
 
@@ -208,6 +232,9 @@ def game_main():
         guess_letter()
         check_game_over()
 
-# will only be run if you run the game through the terminal or an IDE (like PyCharms)
+# will only be run if you run the game through the terminal or an IDE
+# (like PyCharms)
+
+
 if __name__ == '__game_main__':
     game_main()
