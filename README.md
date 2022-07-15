@@ -8,3 +8,9 @@
     will be shown on screen.
 7. If all lives has been lost, the hangman drawing will be completed and the player has lost. A message will display on screen
     telling the player of his/her/their loss.
+
+problems yet to be solved:
+    1. pylint (missing-function-docstring)
+
+problems and their solutions
+    1. changing the range and len method to a enumerate method.
