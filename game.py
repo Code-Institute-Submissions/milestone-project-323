@@ -46,7 +46,7 @@ def random_word():
     # this will make the program choose a word from this list of acceptable
     random_chosen_words = random.choice(words_list)
     # this will make the randomly chosen word appear in uppercase
-    random_chosen_words = random_chosen_words.upper()
+    random_chosen_words = random_chosen_words.lower()
 
 # This function will create dashes for where there are yet to be placed any
 # words
